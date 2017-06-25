@@ -1,0 +1,317 @@
+#index
+
+  // Hero section
+  & #hero
+    @apply --flexCol
+    height: 90vh
+
+    & #heroContent
+      height: 100%
+      display: flex
+      flex-flow: column nowrap
+      justify-content: center
+
+      & h1
+        text-align: center
+        padding: 0 1em
+        font-size: 1.6em
+        max-width: 20em
+
+        & p:last-of-type
+          color: var(--brandColour)
+
+    & #heroImage
+      width: 200px
+
+      @media all and (min-width: 1440px)
+        width: 300px
+
+      @media all and (min-width: 768px) and (min-height: 1024px)
+        width: 250px
+
+  // What to expect
+
+  & #whatToExpect
+    padding: 2em
+    color: white
+    font-family: 'soleil', sans-serif
+
+    & .what-to-expect-content
+      @apply --flexCol
+      margin: 3em 0
+      width: 100%
+
+      & h2
+        margin-top: 0
+        color: white
+        text-transform: uppercase
+        font-size: 2em
+        text-align: center
+
+      @media all and (min-width: 600px)
+        flex-flow: row nowrap
+
+        & h2
+          flex: 1 1 auto
+          font-size: 4em
+          text-align: right
+          line-height: 1.1
+
+        & .expectContent
+          flex: 1.5 1.5 auto
+          border-left: 2px solid white
+          padding-left: 2em
+          margin: 2em
+
+  // How We help
+
+  & #howWeHelp
+    position: relative
+
+    &:before
+      @apply --addDotsTriangle
+      z-index: -1
+
+    & h2
+      color: var(--brandGrey)
+      text-transform: uppercase
+      margin: 0em 0em
+      padding: 1em 0
+      font-size: 3rem
+      text-align: center
+
+    & .service-container
+      display: flex
+      flex-flow: column nowrap
+      justify-content: center
+      position: relative
+      width: 100%
+
+      @media screen and (min-width: 600px)
+        display: flex
+        flex-flow: row wrap
+        justify-content: space-around
+        align-content: center
+
+      & .service-card
+        display: flex
+        flex-flow: column nowrap
+        align-items: center
+        margin: 1em
+        background: #FFFFFF
+        border: 1px solid #D9D1D1
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.24)
+        border-radius: 4px
+        font-family: 'soleil', sans-serif
+        max-width: 100%
+
+        & a.g-button
+          margin-bottom: 3em
+
+        @media screen and (min-width: 600px)
+          flex: 0 1 45%
+          margin: 0
+          margin-bottom: 4em
+
+        &:hover
+          border: 1px solid var(--brandColour)
+
+        & .service-card__image
+          display: flex
+          flex-flow: column nowrap
+          align-items: center
+          width: 100%
+          background:
+            radial-gradient(
+              198.86px at 50% 50%,
+              rgba(255, 255, 255, 0.41) 0%,
+              rgba(255, 255, 255, 0) 100%),
+            linear-gradient(0deg, #6D6D6D, #6D6D6D)
+          padding: 2em
+          border-radius: 4px 4px 0px 0px
+
+          & img
+            width: 55%
+
+        & .service-card__content
+          display: flex
+          flex: 1 1 auto
+          flex-flow: column nowrap
+          align-items: center
+          justify-content: space-around
+          padding: 2em
+          width: 100%
+
+          & hr
+            background-color: var(--brandColour)
+            height: 2px
+            width: 100px
+            border: 0
+
+          & p
+            font-weight: 200
+            width: 100%
+
+          & h3
+            text-align: center
+
+  // Meet the team
+  & #meetTheTeam
+    position: relative
+    margin-bottom: 5em
+
+    &:before
+      @apply --addDotsTriangle
+      top: -127px
+      z-index: -1
+
+    & h2
+      color: var(--brandGrey)
+      text-transform: uppercase
+      margin: 0em 0em
+      padding: 1em 0
+      font-size: 3em
+      text-align: center
+
+    & #nextTeamMember
+      cursor: pointer
+
+    & .s-team-carousel
+      padding: 2em
+      width: 100%
+
+      & .s-team-carousel-member
+        margin-bottom: 5em
+        max-width: 100%
+
+        @media screen and (min-width: 800px)
+          display: flex
+          flex-flow: row nowrap
+          justify-content: space-around
+          align-content: center
+
+        &.js-inactive
+          visibility: hidden
+          opacity: 0
+          transition: opacity ease 700ms
+          height: 0
+          margin-bottom: 0
+
+        &.js-active
+          visibility: visible
+          transition: opacity ease 700ms
+          opacity: 1
+          height: auto
+          margin-bottom: 0
+
+        & .s-team-carousel-member__avatar
+          max-width: 40%
+          margin: 0 auto
+          flex: 1
+
+          @media all and (min-width: 800px)
+            flex: 1 1 60%
+            margin-right: 4em
+
+        & .s-team-carousel-member__content
+
+          @media all and (min-width: 800px)
+            flex: 1 2 auto
+
+          & .s-team-carousel-member__name
+            font-size: 1.5em
+
+          & .s-team-carousel-member__jobTitle
+            font-family: 'soleil', sans-serif
+            font-weight: 600
+
+          & .s-team-carousel-member__bio
+
+  //Events preview
+  & #eventsPreview
+    padding: 4em 0em
+
+    // Test new approach
+
+    & .events-container
+      display: flex
+      flex-flow: column nowrap
+      justify-content: center
+      position: relative
+      width: 100%
+
+      @media screen and (min-width: 600px)
+        display: flex
+        flex-flow: row wrap
+        justify-content: space-around
+        align-content: center
+
+      & .events-card
+        display: flex
+        flex-flow: column nowrap
+        align-items: center
+        margin: 1em
+        background: #FFFFFF
+        // border: 1px solid #D9D1D1
+        box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.24)
+        border-radius: 4px
+        font-family: 'soleil', sans-serif
+        max-width: 100%
+
+        & a.g-button
+          margin-bottom: 3em
+
+        @media screen and (min-width: 600px)
+          flex: 0 1 45%
+          margin: 0
+          margin-bottom: 4em
+
+        // &:hover
+        //   border: 1px solid var(--brandColour)
+
+        & .events-card__image
+          display: flex
+          flex-flow: column nowrap
+          align-items: center
+          width: 100%
+          border-radius: 4px 4px 0px 0px
+
+          & img
+            width: 100%
+            border-radius: 4px 4px 0px 0px
+
+        & .events-card__content
+          display: flex
+          flex: 1 1 auto
+          flex-flow: column nowrap
+          align-items: center
+          justify-content: space-around
+          padding: 2em
+          width: 100%
+
+          & hr
+            background-color: var(--brandColour)
+            height: 2px
+            width: 100px
+            border: 0
+
+          & p
+            font-weight: 200
+            width: 100%
+
+          & h3
+            text-align: center
+
+    // Old approach
+
+    & a.read-more
+      color: white
+      text-align: center
+      margin: 0 auto
+      width: 200px
+
+    & h2
+      text-transform: uppercase
+      font-size: 3em
+      color: white
+      text-align: center

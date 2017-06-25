@@ -1,0 +1,133 @@
+header
+  margin: 0 auto
+  width: 100%
+  margin-bottom: 1em
+  background-color: rgba(255,255,255,0.96)
+  z-index: 5
+
+.header-content
+  @apply --flexCol
+
+  & nav
+    display: none
+    flex: 1
+    color: var(--brandColour)
+    text-align: center
+    width: 80%
+    z-index: 100
+
+    & ul
+      list-style-type: none
+      margin: 0
+      padding: 0
+      width: 100%
+
+      & li
+        border-bottom: 1px solid rgba(0,0,0,0.1)
+        position: relative
+
+        & a
+          display: block
+          color: var(--brandColour) !important
+          font-weight: 500
+          padding: 1.5rem 0
+          text-decoration: none
+
+  & #logo
+    display: flex
+    flex-flow: row nowrap
+    padding: 1em
+    justify-content: space-between
+    align-content: flex-start
+
+    & a
+      flex: 0 0 120px
+      margin-right: 0.8em
+      text-align: left
+
+    & div#navToggle
+      //background-color: #dddddd
+      //border: 2px solid var(--brandColour)
+      align-self: flex-end
+      border-radius: 4px
+
+      &:hover
+        background-color: rgba(0,0,0,0.1)
+
+      & a
+        color: var(--brandColour)
+        font-family: "soleil", sans-serif
+        display: block
+        font-size: 0.85em
+        font-weight: 500
+        text-transform: uppercase
+        text-align: center
+        padding: 0 1.5rem
+        text-decoration: none
+
+  @media all and (min-width: 600px)
+    flex-direction: row
+    align-items: baseline
+
+    & div#logo
+      flex: 1
+
+      & div#navToggle
+        display: none
+
+      & a
+        flex: 0 0 180px
+
+    & nav
+      flex: 2
+      display: flex
+      font-size: 13px
+      font-family: "soleil", sans-serif
+      font-size: 0.6em
+
+      & ul
+        display: flex
+        align-items: center
+        justify-content: space-between
+        list-style: none
+        margin: 0 2em
+
+        & li
+          flex: 0 1 auto
+          border-bottom: none
+
+          & a
+            text-decoration: none
+            text-transform: uppercase
+            color: var(--brandGrey) !important
+            padding-bottom: 5px
+            transition: ease all 500ms
+
+            &:visited
+              color: var(--brandGrey)
+
+            &:hover
+              color: #b7b7b7 !important
+
+            &:active
+              transform: translateY(2px)
+              transition: translateY ease 750ms
+
+          & a.active
+            border-bottom: 2px var(--brandColour) solid
+
+            &:hover
+              color: var(--brandGrey) !important
+
+            &:active
+              transform: none
+
+  @media all and (min-width: 920px)
+    & nav
+      font-size: 0.8em
+
+
+
+  @media all and (min-width: 800px)
+    .header-content > nav
+      font-size: 0.9em

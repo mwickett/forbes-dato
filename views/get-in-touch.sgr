@@ -1,0 +1,44 @@
+extends(src="layout.sgr")
+  block(name="content")
+    .p-header-img(role="img" aria-label="Dr. Forbes & Associates Contact Page Header")
+    .p-wrapper
+      .g-wrapper
+        .p-content-block.g-border
+          .g-flourish-bar
+          .p-content-block__grid-wrapper
+            .p-content-block__col
+              h2 {{ contentful.contactPage[0].fields.getInTouch }}
+              p
+                | {{{ marked(contentful.contactPage[0].fields.contactBody) }}}
+              p
+               | Phone: {{ contentful.contactPage[0].fields.contactPhone }}
+              p
+                | Fax: {{ contentful.contactPage[0].fields.contactFax }}
+
+              p: a(href="mailto:{{ contentful.contactPage[0].fields.contactEmail }}") {{ contentful.contactPage[0].fields.contactEmail }}
+
+              p
+                | {{{ marked(contentful.contactPage[0].fields.contactAddress) }}}
+
+            .p-content-block__col
+              h3 Contact Us
+              form.contact-form(action="thanks", name="contact", netlify, netlify-honeypot="bot-field" novalidate)
+                  .form-row
+                    input#name(type="text" name="name" placeholder="Your Name" required)
+                    label(for="name") Name (required)
+                  .form-row
+                    input#email(type="email" name="email" placeholder="name@domain.com" required)
+                    label(for="email") Email (required)
+                  .form-row
+                    input#message(type="text" name="message" placeholder="Message or question")
+                    label(for="message") Message
+                  .form-row
+                    input.hidden#bot-field(type="text" name="bot-field" placeholder="Spam check")
+                    label.hidden(for="bot-field") Bot field
+                  .form-row
+                    button(name="submit") Send
+                  .form-row
+                    span.formStatus(aria-live="polite")
+
+          .google-map
+            iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.2673941800344!2d-81.2446940486125!3d42.993703802738956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882ef207831d877b%3A0xbd3533b383cbe999!2sDr.+Lindsey+Forbes!5e0!3m2!1sen!2sca!4v1494551182511" width="600" height="450" frameborder="0" title="Google map embed" style="border:0" allowfullscreen)

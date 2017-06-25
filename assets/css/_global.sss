@@ -1,0 +1,187 @@
+:root
+  --brandColour: #F03F35
+  --brandGrey: #4D4D4D
+  --white: #ffffff
+  --black: #000000
+  --blue: #006dc1
+
+  --addDotsTriangle:
+    background: url('../img/dots.svg') top center no-repeat
+    background-size: contain
+    content: ' '
+    position: absolute
+    z-index: 0
+    width: 90%
+    height: 100%
+    opacity: 0.2
+    left: 5%
+    @media all and (min-width: 740px)
+      width: 50%
+      left: 25%
+
+  --flexCol:
+    display: flex
+    flex-flow: column nowrap
+    justify-content: space-between
+    align-items: center
+
+  --transitionOpacity: opacity 0.4s ease
+  --transitionBackground: background 0.4s ease
+  --transitionColor: color 0.4s ease
+
+  // Page level applies
+
+  // This is a "standard" page layout with block content (team, events)
+  --standardPage
+    & .p-wrapper
+      position: relative
+      margin: 1em
+      // Creates card overlap effect
+      margin-top: -2em
+
+      @media all and (min-width: 600px)
+        margin-top: -5em
+
+      & .p-content-block
+        padding: 2em 1em
+        background-color: white
+        margin-bottom: 4em
+
+        @media all and (min-width: 600px)
+          padding: 2em
+
+      & .p-content-block__grid-wrapper
+        @apply --flexCol
+        align-items: stretch
+
+        @media all and (min-width: 600px)
+          flex-flow: row nowrap
+          justify-content: space-between
+
+        & .p-content-block__col
+
+          @media all and (min-width: 600px)
+            width: 45%
+
+        & .p-content-block__col:nth-of-type(2)
+          margin-top: 2em
+
+          @media all and (min-width: 600px)
+            margin-top: 0
+
+html,
+body
+  height: 100%
+
+body
+  font-family: "ff-tisa-web-pro", serif
+  font-size: responsive 14px 20px
+  font-range: 320px 1280px
+  -webkit-font-smoothing: antialiased
+  text-rendering: optimizeLegibility
+
+main
+  // Compensate for sticky nav
+  margin-top: 86px
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family: "soleil", sans-serif
+  color: var(--brandGrey)
+
+h1
+  font-weight: 100
+
+a,
+a:visited,
+a:active
+  color: var(--blue)
+
+img
+  max-width: 100%
+
+
+// Layout
+
+// Global content wrapper
+.g-wrapper
+  max-width: 50em
+  margin: 0 auto
+
+//Global component styles
+
+.g-center
+  margin: 0 auto
+  text-align: center
+
+// Flourish bar
+.g-flourish-bar
+  width: 95px
+  height: 10px
+  background-color: var(--brandColour)
+  margin-bottom: 2em
+
+//Border
+.g-border
+  border: 1px solid #D9D1D1
+
+// Full div with image and red overlay
+.g-imageBg
+  background:
+    linear-gradient(
+      rgba(240, 63, 53, 0.92),
+      rgba(240, 63, 53, 0.92)),
+    url(../img/runners.jpg)
+
+// Button
+a.g-button, button.g-button
+  font-family: "soleil", sans-serif
+  font-style: normal
+  text-transform: uppercase
+  font-weight: 300
+  font-size: 15.8px
+  line-height: 100%
+  letter-spacing: 1.738px
+  color: #6D6D6D
+  padding: 1em 2em
+  text-decoration: none
+  border: 2px solid #6D6D6D
+  box-sizing: border-box
+  border-radius: 4px
+  transition: 250ms all ease
+  margin: 1em
+  cursor: pointer
+
+  &:hover
+    color: white
+    background-color: var(--brandColour)
+    font-weight: 600
+    border: 2px solid var(--brandColour)
+    transition: 250ms all ease
+
+button.g-button:focus
+  outline: none
+
+// Cropped top and bottom grey background
+.g-background
+  background-color: #F4F2F2
+  height: calc(100% - 14rem)
+  z-index: -1
+  position: absolute
+  top: 5rem
+  // Override any container - seems to work, but needs testing
+  width: 100vw
+  left: 50%
+  right: 50%
+  margin-left: -50vw
+  margin-right: -50vw
+
+// Overrides
+
+.hidden
+  display: none
+  opacity: 0

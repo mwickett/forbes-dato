@@ -1,0 +1,37 @@
+#footer
+  .g-wrapper
+    .footer-content
+      .footer-item
+        h5 Services
+        ul
+          each(loop='service of contentful.services')
+            li:a(href="/how-we-help#{{{ slugify(service.fields.serviceName) }}}") {{ service.fields.serviceName }}
+
+
+      .footer-item
+        h5 Information
+        ul
+          li: a(href='/meet-our-team') Team
+          li: a(href='/upcoming-events') Events
+
+      .footer-item
+        h5 Contact Us
+        ul
+          li info@drforbes.ca
+          li 630 Colborne Street
+             |Unit 130
+             br
+             |London Ontario N6B 2V2
+          li 519-280-6697
+
+
+      //- .footer-item
+      //-   h5 Follow Us
+      //-   ul
+      //-     li: a(href='https://www.facebook.com/drforbes') Facebook Icon
+
+
+      .bottom
+        h6: a(href='/privacy') Privacy Policy
+
+        h6 &copy; 2017 Forbes and Associates

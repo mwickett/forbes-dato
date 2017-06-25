@@ -1,0 +1,90 @@
+#how-we-help
+  & .p-services-container
+
+    // @media screen and (min-width: 600px)
+    //   display: flex
+    //   flex-flow: row wrap
+    //   justify-content: space-around
+    //   align-content: center
+
+    & .p-services-header
+      background-color: var(--brandColour)
+      width: 100vw
+      position: relative
+      padding-bottom: 5em
+
+      & .p-services-header-content-wrapper
+        padding: 2em
+        color: white
+        font-family: 'soleil', sans-serif
+        // @apply --flexCol
+
+        & .p-services-header-content
+          // @apply --flexCol
+          flex: 1.5 1.5 auto
+          // align-items: flex-start
+
+          & h2
+            color: white
+            font-size: 2em
+            line-height: 1
+            margin-bottom: 0.4em
+
+        & .p-services-header-image
+          flex: 1 1 auto
+
+        @media screen and (min-width: 600px)
+          display: flex
+          flex-flow: row nowrap
+          justify-content: space-around
+
+          & h2
+            font-size: 3em !important
+
+    & .p-services-content
+      // @apply --flexCol
+      margin-bottom: 4em
+      position: relative
+
+      // &:before
+      //   @apply --addDotsTriangle
+
+      & .p-services-content-panel
+        padding: 1.5em
+        margin: 1em
+        flex: 1 1 50%
+        margin-top: -5em
+        z-index: 2
+        background-color: white
+
+        & .p-services-content__block
+          margin-bottom: 2em
+
+          & h5
+            margin-bottom: 0
+
+          & p
+            margin-top: 0.5em
+
+      & .p-services-content-panel:nth-of-type(2)
+        margin-top: 1em
+
+        @media screen and (min-width: 600px)
+          margin-top: -5em
+
+      @media screen and (min-width: 600px)
+        display: flex
+        flex-flow: row nowrap
+        justify-content: space-around
+        align-items: stretch
+        flex: 1
+
+  & .g-wrapper
+    & .siema
+      width: 100%
+      margin: 0 auto
+      margin-bottom: 2rem
+
+    & .siema-buttons
+      width: 100%
+      margin: 0 auto

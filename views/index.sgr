@@ -1,0 +1,102 @@
+extends(src='layout.sgr')
+  block(name='content')
+    #hero
+      #heroContent
+        h1 {{{ marked(contentful.home[0].fields.missionStatement) }}}
+      #heroImage
+        picture
+          source(type='image/webp'
+            srcset='{{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=2000&fit=fill 2000w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=1500&fit=fill 1500w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=900 900w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=webp&w=450 450w')
+          img(src='{{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=900&fit=fill'
+            srcset='{{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=2000&fit=fill 2000w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=1500&fit=fill 1500w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=900 900w,
+            {{ contentful.home[0].fields.landerImage.fields.file.url }}?fm=jpg&w=450 450w'
+            alt='{{ contentful.home[0].fields.landerImage.fields.description }}')
+
+    #whatToExpect.g-imageBg
+      .g-wrapper
+        .what-to-expect-content
+          h2 {{ contentful.home[0].fields.whatToExpectTitle }}
+          .expectContent
+            | {{{ marked(contentful.home[0].fields.whatToExpectBody) }}}
+
+    #howWeHelp
+      h2 How we help
+      .service-container.g-wrapper
+        .g-background
+        each(loop='homePageFeature of contentful.home[0].fields.homePageFeatures')
+          .service-card
+            .service-card__image
+              img(src='{{ homePageFeature.fields.serviceIcon.fields.file.url }}' alt='{{ homePageFeature.fields.serviceIcon.fields.description }}')
+            .service-card__content
+              h3 {{ homePageFeature.fields.serviceName }}
+              hr
+              p {{ homePageFeature.fields.homepageDescription }}
+            a.g-button(href='/how-we-help#{{{ slugify(homePageFeature.fields.serviceName) }}}') {{ homePageFeature.fields.homepageButtonText }}
+
+    #meetTheTeam
+      h2 Meet the team
+      .s-team-carousel.g-wrapper
+        each(loop='teamMember of contentful.team')
+          .s-team-carousel-member(id='{{{ slugify(teamMember.fields.name )}}}')
+            .s-team-carousel-member__avatar
+              picture
+                source(type='image/webp'
+                  srcset='{{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=webp 2000w,
+                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=webp 1500w,
+                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=webp 900w,
+                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=200&h=200&r=1000&fm=webp 450w')
+                img(src='{{ teamMember.fields.avatar.fields.file.url }}?fm=jpg&w=900&h=900&fit=thumb&r=1000'
+                  srcset='{{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=2000&h=2000&r=1000&fm=jpg 2000w,
+                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=1500&h=1500&r=1000&fm=jpg 1500w,
+                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=900&h=900&r=1000&fm=jpg 900w,
+                  {{ teamMember.fields.avatar.fields.file.url }}?f=face&fit=thumb&w=450&h=450&r=1000&fm=jpg 450w'
+                  alt='{{ teamMember.fields.avatar.fields.description }}')
+            .s-team-carousel-member__content
+              h3.s-team-carousel-member__name {{ teamMember.fields.name }}, {{ teamMember.fields.educationTitle }}
+              p.s-team-carousel-member__jobTitle {{ teamMember.fields.jobTitle }}
+              .s-team-carousel-member__bio
+                | {{{ marked(teamMember.fields.shortBio) }}}
+              a(href='/meet-our-team#{{{ slugify(teamMember.fields.name)}}}') Read more &rarr;
+      .g-center
+        a.g-button(id='nextTeamMember') Next team member &rarr;
+
+    #eventsPreview.g-imageBg
+      h2 Events
+      .events-container.g-wrapper
+        if(condition="contentful.events.length > 0")
+          each(loop='event of contentful.homePageEvents')
+            .events-card
+              .events-card__image
+                img(src="{{ event.fields.eventImage.fields.file.url }}?w=500" alt="{{ event.fields.eventImage.fields.description }}")
+              .events-card__content
+                h3 {{ event.fields.eventTitle }}
+                hr
+                p {{ event.fields.eventDescription.split(' ').slice(0, 25).join(' ') }}…
+                a.g-button(href='/upcoming-events#{{{ slugify(event.fields.eventTitle) }}}') Read more &rarr;
+                hr
+                .g-address
+                  | {{{ marked(event.fields.eventAddress) }}}
+                hr
+                if(condition="event.fields.dateTime")
+                  p {{{ formatDate(event.fields.dateTime) }}}
+                else
+                  p Date to be determined
+        else
+          .events-card
+            h3 No events scheduled
+            p
+              Check back soon, or
+              a(href="/get-in-touch")get in touch.
+            //- p
+            //-   a(href="#") Sign-up to be notified
+            //-   | &nbsp; by email when an event is scheduled.
+      if(condition="contentful.events.length > 3")
+        .g-center
+          a.read-more(href='/upcoming-events') See all events
+
+    include(src='includes/_cta.sgr')
